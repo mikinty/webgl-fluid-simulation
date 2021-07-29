@@ -13,13 +13,13 @@ better web coding standards.
 1. Create a new Webflow project
 2. In custom code, add the following to your header
    ```html
-   <script type="text/javascript" src="https://raw.githubusercontent.com/mikinty/webgl-fluid-simulation/main/dat.gui.min.js"></script>
-   <link rel="stylesheet" href="https://raw.githubusercontent.com/mikinty/webgl-fluid-simulation/main/style.css">
+   <script type="text/javascript" src="https://mikinty.github.io/webgl-fluid-simulation/dat.gui.min.js"></script>
+   <link rel="stylesheet" href="https://mikinty.github.io/webgl-fluid-simulation/style.css">
    ```
 3. In custom code, add the following to your footer
    ```html
    <canvas></canvas>
-   <script src="https://raw.githubusercontent.com/mikinty/webgl-fluid-simulation/main/script.js"></script>
+   <script src="https://mikinty.github.io/webgl-fluid-simulation/script.js"></script>
    ```
 4. For the steps above, it is up to you how you want to reference the script,
    css and `dat.gui.min.js` files. You can either host them on Webflow and use them
