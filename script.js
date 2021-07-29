@@ -18,6 +18,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ * @author mikinty (Github)
+ * @brief Edited Pavel's original WebGL simulation project. The code was quite
+ * unorganized, so I helped make this code easier to read. Also going to
+ * customize this code a bit for my friend to use on his personal site.
+ */
+
 'use strict';
 
 // Simulation section
