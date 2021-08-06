@@ -76,7 +76,6 @@ function pointerPrototype() {
 let pointers = [];
 let splatStack = [];
 pointers.push(new pointerPrototype());
-pointers[0].down = true;
 let START_TIME = Date.now();
 let LOADED = false;
 
@@ -1616,7 +1615,7 @@ canvas.addEventListener("mousedown", (e) => {
 canvas.addEventListener("mousemove", (e) => {
   let pointer = pointers[0];
   if (!pointer.down) {
-    if (LOADED && Date.now() - START_TIME > 1500) {
+    if (LOADED && Date.now() - START_TIME > 500) {
       pointer.down = true;
     } else {
       return;
