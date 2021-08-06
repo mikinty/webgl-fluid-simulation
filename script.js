@@ -1610,7 +1610,7 @@ canvas.addEventListener("mousedown", (e) => {
 canvas.addEventListener("mousemove", (e) => {
   let pointer = pointers[0];
   if (!pointer.down) {
-    if (Date.now() - START_TIME > 500) {
+    if (Date.now() - START_TIME > 1000) {
       pointer.down = true;
     } else {
       return;
