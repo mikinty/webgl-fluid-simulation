@@ -76,6 +76,7 @@ function pointerPrototype() {
 let pointers = [];
 let splatStack = [];
 pointers.push(new pointerPrototype());
+pointers[0].down = true;
 
 const { gl, ext } = getWebGLContext(canvas);
 
@@ -1613,10 +1614,6 @@ canvas.addEventListener("mousemove", (e) => {
   updatePointerMoveData(pointer, posX, posY);
 });
 
-window.addEventListener("mouseup", () => {
-  updatePointerUpData(pointers[0]);
-});
-
 canvas.addEventListener("touchstart", (e) => {
   e.preventDefault();
   const touches = e.targetTouches;
@@ -1650,7 +1647,6 @@ window.addEventListener("touchend", (e) => {
   for (let i = 0; i < touches.length; i++) {
     let pointer = pointers.find((p) => p.id == touches[i].identifier);
     if (pointer == null) continue;
-    updatePointerUpData(pointer);
   }
 });
 
@@ -1680,10 +1676,6 @@ function updatePointerMoveData(pointer, posX, posY) {
   pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX);
   pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY);
   pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0;
-}
-
-function updatePointerUpData(pointer) {
-  pointer.down = false;
 }
 
 function correctDeltaX(delta) {
