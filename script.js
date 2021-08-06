@@ -77,6 +77,7 @@ let pointers = [];
 let splatStack = [];
 pointers.push(new pointerPrototype());
 pointers[0].down = true;
+const START_TIME = Date.now();
 
 const { gl, ext } = getWebGLContext(canvas);
 
@@ -1608,7 +1609,13 @@ canvas.addEventListener("mousedown", (e) => {
 
 canvas.addEventListener("mousemove", (e) => {
   let pointer = pointers[0];
-  if (!pointer.down) return;
+  if (!pointer.down) {
+    if (Date.now() - START_TIME > 500) {
+      pointer.down = true;
+    } else {
+      return;
+    }
+  }
   let posX = scaleByPixelRatio(e.offsetX);
   let posY = scaleByPixelRatio(e.offsetY);
   updatePointerMoveData(pointer, posX, posY);
