@@ -1636,6 +1636,7 @@ window.addEventListener("mousemove", (e) => {
   }
 });
 
+/*
 const footerElement = document.getElementById('footer-element');
 footerElement.addEventListener("mousemove", (e) => {
   let scrollPosition = document.body.scrollTop;
@@ -1654,6 +1655,7 @@ footerElement.addEventListener("mousemove", (e) => {
   console.log(e.offsetY, canvas.height, footerElement.clientHeight);
   updatePointerMoveData(pointer, posX, posY);
 });
+*/
 
 canvas.addEventListener("touchstart", (e) => {
   e.preventDefault();
