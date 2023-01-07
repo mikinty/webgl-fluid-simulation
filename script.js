@@ -1612,6 +1612,7 @@ function correctRadius(radius) {
  * 3. Fix double effect
  */
 const element = document.getElementById('works');
+const footerElement = document.getElementById('footer-element');
 const position = element.getBoundingClientRect();
 const navHeader = document.getElementById('navheader-element');
 const navHeaderRect = navHeader.getBoundingClientRect();
@@ -1620,8 +1621,9 @@ window.addEventListener("mousemove", (e) => {
   let scrollPosition = document.body.scrollTop;
   // This detects if the mouse is above the works section
   let ifAbove = e.clientY + scrollPosition - yPositionWorks - navHeaderRect.height;
+  let ifPastFooter = e.clientY + scrollPosition - navHeaderRect.height - footerElement.getBoundingClientRect().top;
 
-  if (ifAbove < 0) {
+  if (ifAbove < 0 || ifPastFooter > 0) {
     let pointer = pointers[0];
     if (!pointer.down) {
       if (LOADED && Date.now() - START_TIME > 500) {
