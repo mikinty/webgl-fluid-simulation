@@ -1603,26 +1603,38 @@ function correctRadius(radius) {
   return radius;
 }
 
-canvas.addEventListener("mousedown", (e) => {
-  let posX = scaleByPixelRatio(e.offsetX);
-  let posY = scaleByPixelRatio(e.offsetY);
-  let pointer = pointers.find((p) => p.id == -1);
-  if (pointer == null) pointer = new pointerPrototype();
-  updatePointerDownData(pointer, -1, posX, posY);
-});
-
+/**
+ * We calculate where the work section starts, and disable the mouse under that.
+ * We have to do some offset math to make the canvas take in the correct Y offset.
+ *
+ * 1. Don't do anything if below the line where we don't want it
+ * 2. Fix scroll offsets
+ * 3. Fix double effect
+ */
+const element = document.getElementById('works');
+const position = element.getBoundingClientRect();
+const navHeader = document.getElementById('navheader-element');
+const navHeaderRect = navHeader.getBoundingClientRect();
+const yPositionWorks = position.top;
 canvas.addEventListener("mousemove", (e) => {
-  let pointer = pointers[0];
-  if (!pointer.down) {
-    if (LOADED && Date.now() - START_TIME > 500) {
-      pointer.down = true;
-    } else {
-      return;
+  let scrollPosition = document.body.scrollTop;
+  // This detects if the mouse is above the works section
+  let ifAbove = e.clientY + scrollPosition - yPositionWorks - navheaderRect.height;
+
+
+  if (ifAbove < 0) {
+    let pointer = pointers[0];
+    if (!pointer.down) {
+      if (LOADED && Date.now() - START_TIME > 500) {
+        pointer.down = true;
+      } else {
+        return;
+      }
     }
+    let posX = scaleByPixelRatio(e.offsetX);
+    let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height - scrollPosition);
+    updatePointerMoveData(pointer, posX, posY);
   }
-  let posX = scaleByPixelRatio(e.offsetX);
-  let posY = scaleByPixelRatio(e.offsetY);
-  updatePointerMoveData(pointer, posX, posY);
 });
 
 canvas.addEventListener("touchstart", (e) => {
