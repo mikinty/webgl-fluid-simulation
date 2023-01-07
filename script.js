@@ -1612,7 +1612,6 @@ function correctRadius(radius) {
  * 3. Fix double effect
  */
 const element = document.getElementById('works');
-const footerElement = document.getElementById('footer-element');
 const position = element.getBoundingClientRect();
 const navHeader = document.getElementById('navheader-element');
 const navHeaderRect = navHeader.getBoundingClientRect();
@@ -1621,11 +1620,8 @@ window.addEventListener("mousemove", (e) => {
   let scrollPosition = document.body.scrollTop;
   // This detects if the mouse is above the works section
   let ifAbove = e.clientY + scrollPosition - yPositionWorks - navHeaderRect.height;
-  let ifPastFooter = e.clientY + scrollPosition - navHeaderRect.height - footerElement.getBoundingClientRect().top;
-  console.log(e.clientY, scrollPosition, navHeaderRect.height, footerElement.getBoundingClientRect().top);
-  console.log(ifPastFooter);
 
-  if (ifAbove < 0 || ifPastFooter > 0) {
+  if (ifAbove < 0) {
     let pointer = pointers[0];
     if (!pointer.down) {
       if (LOADED && Date.now() - START_TIME > 500) {
@@ -1638,6 +1634,23 @@ window.addEventListener("mousemove", (e) => {
     let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height - scrollPosition);
     updatePointerMoveData(pointer, posX, posY);
   }
+});
+
+const footerElement = document.getElementById('footer-element');
+footerElement.addEventListener("mousemove", (e) => {
+  let scrollPosition = document.body.scrollTop;
+
+  let pointer = pointers[0];
+  if (!pointer.down) {
+    if (LOADED && Date.now() - START_TIME > 500) {
+      pointer.down = true;
+    } else {
+      return;
+    }
+  }
+  let posX = scaleByPixelRatio(e.offsetX);
+  let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height);
+  updatePointerMoveData(pointer, posX, posY);
 });
 
 canvas.addEventListener("touchstart", (e) => {
