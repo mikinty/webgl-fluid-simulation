@@ -1622,6 +1622,8 @@ window.addEventListener("mousemove", (e) => {
   // This detects if the mouse is above the works section
   let ifAbove = e.clientY + scrollPosition - yPositionWorks - navHeaderRect.height;
   let ifPastFooter = e.clientY + scrollPosition - navHeaderRect.height - footerElement.getBoundingClientRect().top;
+  console.log(e.clientY, scrollPosition, navHeaderRect.height, footerElement.getBoundingClientRect().top);
+  console.log(ifPastFooter);
 
   if (ifAbove < 0 || ifPastFooter > 0) {
     let pointer = pointers[0];
