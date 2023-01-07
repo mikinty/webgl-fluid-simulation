@@ -1649,7 +1649,7 @@ footerElement.addEventListener("mousemove", (e) => {
     }
   }
   let posX = scaleByPixelRatio(e.offsetX);
-  let posY = scaleByPixelRatio(e.offsetY + canvas.height);
+  let posY = scaleByPixelRatio(e.offsetY + canvas.height - footerElement.clientHeight);
   updatePointerMoveData(pointer, posX, posY);
 });
 
