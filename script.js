@@ -1619,7 +1619,7 @@ const yPositionWorks = position.top;
 canvas.addEventListener("mousemove", (e) => {
   let scrollPosition = document.body.scrollTop;
   // This detects if the mouse is above the works section
-  let ifAbove = e.clientY + scrollPosition - yPositionWorks - navheaderRect.height;
+  let ifAbove = e.clientY + scrollPosition - yPositionWorks - navHeaderRect.height;
 
 
   if (ifAbove < 0) {
