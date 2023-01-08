@@ -1653,7 +1653,7 @@ footerElement.addEventListener("mousemove", (e) => {
   updatePointerMoveData(pointer, posX, posY);
 });
 
-canvas.addEventListener("touchstart", (e) => {
+window.addEventListener("touchstart", (e) => {
   e.preventDefault();
   const touches = e.targetTouches;
   while (touches.length >= pointers.length)
@@ -1665,7 +1665,7 @@ canvas.addEventListener("touchstart", (e) => {
   }
 });
 
-canvas.addEventListener(
+window.addEventListener(
   "touchmove",
   (e) => {
     e.preventDefault();
