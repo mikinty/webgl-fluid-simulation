@@ -1632,8 +1632,6 @@ window.addEventListener("mousemove", (e) => {
     }
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height - scrollPosition);
-    console.log('xcanvas', e.offsetX);
-    console.log('ycanvas', e.offsetY + navHeaderRect.height - scrollPosition);
     updatePointerMoveData(pointer, posX, posY);
   }
 });
@@ -1652,9 +1650,6 @@ footerElement.addEventListener("mousemove", (e) => {
   }
   let posX = scaleByPixelRatio(e.clientX);
   let posY = scaleByPixelRatio(e.offsetY + window.innerHeight - footerElement.clientHeight);
-  console.log('new height', e.offsetY + window.innerHeight - footerElement.clientHeight);
-  console.log('x', e.clientX, footerElement.clientWidth);
-  console.log('y', e.offsetY, footerElement.clientHeight);
   updatePointerMoveData(pointer, posX, posY);
 });
 
