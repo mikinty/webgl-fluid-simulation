@@ -1632,11 +1632,12 @@ window.addEventListener("mousemove", (e) => {
     }
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height - scrollPosition);
+    console.log('xcanvas', e.offsetX);
+    console.log('ycanvas', e.offsetY + navHeaderRect.height - scrollPosition);
     updatePointerMoveData(pointer, posX, posY);
   }
 });
 
-/*
 const footerElement = document.getElementById('footer-element');
 footerElement.addEventListener("mousemove", (e) => {
   let scrollPosition = document.body.scrollTop;
@@ -1652,10 +1653,10 @@ footerElement.addEventListener("mousemove", (e) => {
   let posX = scaleByPixelRatio(e.offsetX);
   let posY = scaleByPixelRatio(e.offsetY + window.innerHeight - footerElement.clientHeight);
   console.log('new height', e.offsetY + window.innerHeight - footerElement.clientHeight);
-  console.log(e.offsetY, canvas.height, footerElement.clientHeight);
+  console.log('x', e.offsetX, footerElement.clientWidth);
+  console.log('y', e.offsetY, footerElement.clientHeight);
   updatePointerMoveData(pointer, posX, posY);
 });
-*/
 
 canvas.addEventListener("touchstart", (e) => {
   e.preventDefault();
