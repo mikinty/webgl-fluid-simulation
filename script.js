@@ -1631,7 +1631,7 @@ window.addEventListener("mousemove", (e) => {
       }
     }
     let posX = scaleByPixelRatio(e.offsetX);
-    let posY = scaleByPixelRatio(e.offsetY + navHeaderRect.height - scrollPosition);
+    let posY = scaleByPixelRatio(e.clientY);
     updatePointerMoveData(pointer, posX, posY);
   }
 });
