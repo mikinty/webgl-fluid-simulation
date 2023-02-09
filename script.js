@@ -1611,7 +1611,7 @@ function correctRadius(radius) {
  * 2. Fix scroll offsets
  * 3. Fix double effect
  */
-const element = document.getElementById('works');
+const element = document.getElementById('work');
 const position = element.getBoundingClientRect();
 const navHeader = document.getElementById('navheader-element');
 const navHeaderRect = navHeader.getBoundingClientRect();
